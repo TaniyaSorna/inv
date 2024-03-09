@@ -3,6 +3,16 @@ if (isset($_POST['submit'])) {
     $product_name = $_POST['name'];
     $price = $_POST['price'];
     $qty = $_POST['qty'];
+    // $img = $_POST['img'];
+    if (isset($_FILES['img'])) {
+        $image_name = $_FILES['img']['name'];
+        $temp_location = $_FILES['img']['tmp_name'];
+        $img_url = 'images/' . $image_name;
+        move_uploaded_file($temp_location, $img_url);
+        echo $img_url;
+    }
+
+
     $con = mysqli_connect('localhost', 'root', '', 'inv_crud');
     $sql = "INSERT INTO invoice (product_name, price, qty)VALUES ('$product_name', $price, $qty)";
     $result = mysqli_query($con, $sql);
@@ -29,7 +39,7 @@ if (isset($_POST['submit'])) {
     <div class="container mt-5">
         <div class="row">
             <div class="col-9  mx-auto mt-5">
-                <form action="" method="post" class="col-8 bg-white px-5 pb-5 mx-auto shadow-lg">
+                <form action="" method="post" class="bg-white px-5 pb-5 mx-auto shadow-lg" enctype="multipart/form-data">
                     <label for="" class="mt-5">Product Name</label>
                     <input type="text" name="name" class="form-control form-input form-control-sm"><br>
 
