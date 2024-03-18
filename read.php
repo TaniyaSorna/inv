@@ -14,6 +14,15 @@ if (isset($_GET['edit_id'])) {
     $id = $_GET['edit_id'];
     header("location: edit.php?edit_id=$id");
 }
+if (isset($_GET['add_qty'])) {
+    $id = $_GET['add_qty'];
+    header("location: qty.php?add_qty=$id");
+}
+
+if (isset($_GET['sele_id'])) {
+    $id = $_GET['sele_id'];
+    header("location: sele.php?sele_id=$id");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +38,7 @@ if (isset($_GET['edit_id'])) {
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-9 mx-auto mt-5">
+            <div class="col-10 mx-auto mt-5">
                 <table border="1" cellpadding="10" class="table shadow-lg">
                     <thead>
                         <tr class="table-info">
@@ -44,6 +53,7 @@ if (isset($_GET['edit_id'])) {
                     <tbody>
                         <?php
                         while ($row = mysqli_fetch_assoc($data)) {
+                            // print_r($row);
                             echo '<tr>';
                             echo '<td>' . $row['id'] . '</td>';
                             echo '<td>' . $row['product_name'] . '</td>';
@@ -53,6 +63,7 @@ if (isset($_GET['edit_id'])) {
                             <img src="' . $row['img'] . '" alt="Product Image" class="img-thumbnail" width="60px">
                             </td>';
                             echo '<td>
+                                <a href="?sele_id=' . $row['id'] . '" class="btn btn-sm btn-primary px-3 py-1">Sale</a>
                                 <a href="?add_qty=' . $row['id'] . '" class="btn btn-sm btn-info px-3 py-1">Add Qty</a>
                                 <a href="?edit_id=' . $row['id'] . '" class="btn btn-sm btn-success px-3 py-1 mx-3">Edit</a>
                                 <a href="?delete_id=' . $row['id'] . '" class="btn btn-sm btn-danger px-3 py-1">Delete</a>
@@ -62,7 +73,7 @@ if (isset($_GET['edit_id'])) {
                         ?>
                     </tbody>
                 </table>
-                <span><a href="./index.php" class="btn btn-sm btn-secondary px-5 py-1">Create</a></span>
+                <span><a href="./input.php" class="btn btn-sm btn-secondary px-5 py-1">Create</a></span>
 
             </div>
         </div>

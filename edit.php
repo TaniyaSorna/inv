@@ -9,7 +9,7 @@ if ($_REQUEST['edit_id']) {
 }
 
 if (isset($_POST['update'])) {
-    $product_name = $_POST['product_name'];
+    $product_name = $_POST['name'];
     $price = $_POST['price'];
     $qty = $_POST['qty'];
 
@@ -56,7 +56,7 @@ if (isset($_POST['update'])) {
 
                     <label for="">Product Image</label>
                     <input type="file" name="img" value="<?php echo $data['img']; ?>" class="form-control form-input form-control-sm">
-                    <input type="submit" value="Update" name="update" class=" bg-info my-3 py-2 px-4 border-0 shadow text-white">
+                    <input type="submit" value="Update" name="update" class=" bg-info my-3 py-2 px-4 border-0 rounded text-white">
 
                 </form>
             </div>

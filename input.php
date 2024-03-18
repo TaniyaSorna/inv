@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
 
 
     $con = mysqli_connect('localhost', 'root', '', 'inv_crud');
-    $sql = "INSERT INTO invoice (product_name, price, qty)VALUES ('$product_name', $price, $qty)";
+    $sql = "INSERT INTO invoice (product_name, price, qty, img)VALUES ('$product_name', $price, $qty, '$img_url')";
     $result = mysqli_query($con, $sql);
     if ($result) {
         echo 'inserted';

@@ -17,4 +17,8 @@ set
 where
     id = 10;
 
+SELECT SUM(price) FROM invoice WHERE id = 1
+
 TRUNCATE TABLE invoice
+
+SELECT qty FROM invoice WHERE id = 3;
